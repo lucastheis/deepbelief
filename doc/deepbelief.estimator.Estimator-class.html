@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.estimator.Estimator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        <a href="deepbelief.estimator-module.html">Module&nbsp;estimator</a> ::
+        Class&nbsp;Estimator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.estimator.Estimator-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Estimator</h1><p class="nomargin-top"><span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator">source&nbsp;code</a></span></p>
+<p>This class implements annealed importance sampling for the estimation 
+  of partition functions and means to estimate log-probabilities of data 
+  samples.</p>
+  <p>Always estimate the partition function of a deep belief network 
+  first.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.estimate_log_partition_function(self, num_ais_samples=100, beta_weights=np.arange(0, 1, 1000))</pre>
+  <p>The choice of the parameters is crucial. More samples and weights will
+  lead to less biased estimates. Only after the partition function has been
+  estimated with appropriate parameters should <a 
+  href="deepbelief.estimator.Estimator-class.html#estimate_log_probability"
+  class="link">estimate_log_probability</a> be called.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>logprob, lowerbound = dbn.estimate_log_probability(data, num_samples=100)</pre>
+  <p>Taking more samples will reduce the variance of the estimates.</p>
+  <p>If one of the lower layers is an instance of <a 
+  href="deepbelief.semirbm.SemiRBM-class.html" class="link">SemiRBM</a>, 
+  then <a 
+  href="deepbelief.estimator.Estimator-class.html#estimate_log_partition_function"
+  class="link">estimate_log_partition_function</a> also has to be run for 
+  this layer with a <i>large</i> value for 
+  <code>num_ais_samples</code>.</p>
+  <p><b>References:</b></p>
+  <ul>
+    <li>
+      Salakhutdinov, R. and Murray, I. (2008). <i>On the Quantitative 
+      Analysis of Deep Belief Networks.</i>
+    </li>
+    <li>
+      Theis, L., Gerwinn, S., Sinz, F. Bethge, M. (2010). <i>Likelihood 
+      Estimation in Deep Belief Networks.</i>
+    </li>
+  </ul>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dbn</span>)</span><br />
+      Prepare the sampler.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.estimator.Estimator-class.html#estimate_log_partition_function" class="summary-sig-name">estimate_log_partition_function</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_ais_samples</span>=<span class="summary-sig-default">100</span>,
+        <span class="summary-sig-arg">beta_weights</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">layer</span>=<span class="summary-sig-default">-1</span>)</span><br />
+      Estimate the log of the partition function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator.estimate_log_partition_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.estimator.Estimator-class.html#estimate_log_probability" class="summary-sig-name">estimate_log_probability</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>,
+        <span class="summary-sig-arg">num_samples</span>=<span class="summary-sig-default">200</span>)</span><br />
+      Estimates the log-probability in nats.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator.estimate_log_probability">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="estimate_log_partition_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_partition_function</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_ais_samples</span>=<span class="sig-default">100</span>,
+        <span class="sig-arg">beta_weights</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">layer</span>=<span class="sig-default">-1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator.estimate_log_partition_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimate the log of the partition function.</p>
+  <p><code>beta_weights</code> should be a list of monotonically increasing
+  values ranging from 0 to 1. See Salakhutdinov &amp; Murray (2008) for 
+  details on how to set the parameters.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_ais_samples</code></strong> (integer) - number of samples used to estimate the partition function</li>
+        <li><strong class="pname"><code>beta_weights</code></strong> (array_like) - annealing weights ranging from zero to one</li>
+        <li><strong class="pname"><code>layer</code></strong> (integer) - can be used to estimate the partition function of one of the 
+          lower layers</li>
+    </ul></dd>
+    <dt>Returns: real</dt>
+        <dd>the estimated log partition function</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="estimate_log_probability"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_probability</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>,
+        <span class="sig-arg">num_samples</span>=<span class="sig-default">200</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.estimator-pysrc.html#Estimator.estimate_log_probability">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimates the log-probability in nats.</p>
+  <p>This method returns two values: Optimistic but consistent estimates of
+  the log probability of the given data samples and estimated lower bounds.
+  The parameter <code>num_samples</code> is only relevant for DBNs with at 
+  least 2 layers.  <a 
+  href="deepbelief.estimator.Estimator-class.html#estimate_log_partition_function"
+  class="link">estimate_log_partition_function</a>() should be run with 
+  appropriate parameters beforehand, otherwise the probability estimates 
+  will be very poor.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - the data points for which to estimate the log-probability</li>
+        <li><strong class="pname"><code>num_samples</code></strong> (integer) - the number of Monte Carlo samples used to estimate the 
+          unnormalized probability of the data samples</li>
+    </ul></dd>
+    <dt>Returns: tuple</dt>
+        <dd>a tuple consisting of the estimated log-probabilities (first 
+          entry) and estimated lower bounds (second entry)</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:29 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

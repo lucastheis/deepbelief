@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.mixbm</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        Module&nbsp;mixbm
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.mixbm-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="deepbelief.mixbm-module.html">Module deepbelief.mixbm</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">numpy</tt> <tt class="py-keyword">as</tt> <tt class="py-name">np</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module deepbelief.rbm=deepbelief.rbm-module.html"><a title="deepbelief.rbm" class="py-name" href="#" onclick="return doclink('link-0', 'rbm', 'link-0');">rbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class deepbelief.rbm.RBM=deepbelief.rbm.RBM-class.html"><a title="deepbelief.rbm.RBM" class="py-name" href="#" onclick="return doclink('link-1', 'RBM', 'link-1');">RBM</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module deepbelief.gaussianrbm=deepbelief.gaussianrbm-module.html"><a title="deepbelief.gaussianrbm" class="py-name" href="#" onclick="return doclink('link-2', 'gaussianrbm', 'link-2');">gaussianrbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class deepbelief.gaussianrbm.GaussianRBM=deepbelief.gaussianrbm.GaussianRBM-class.html"><a title="deepbelief.gaussianrbm.GaussianRBM" class="py-name" href="#" onclick="return doclink('link-3', 'GaussianRBM', 'link-3');">GaussianRBM</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Module deepbelief.semirbm=deepbelief.semirbm-module.html"><a title="deepbelief.semirbm" class="py-name" href="#" onclick="return doclink('link-4', 'semirbm', 'link-4');">semirbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class deepbelief.semirbm.SemiRBM=deepbelief.semirbm.SemiRBM-class.html"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-5', 'SemiRBM', 'link-5');">SemiRBM</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">'MIT License &lt;http://www.opensource.org/licenses/mit-license.php&gt;'</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Lucas Theis &lt;lucas@tuebingen.mpg.de&gt;'</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__docformat__</tt> <tt class="py-op">=</tt> <tt class="py-string">'epytext'</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="MixBM"></a><div id="MixBM-def"><a name="L10"></a><tt class="py-lineno"> 10</tt> <a class="py-toggle" href="#" id="MixBM-toggle" onclick="return toggle('MixBM');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html">MixBM</a><tt class="py-op">(</tt><tt class="py-base-class">RBM</tt><tt class="py-op">,</tt> <tt class="py-base-class">GaussianRBM</tt><tt class="py-op">,</tt> <tt class="py-base-class">SemiRBM</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MixBM-expanded"><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">        This class can be used to draw samples from a Boltzmann machine whose energy</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">        is a weighted sum of the energies of two given L{RBMs&lt;RBM&gt;}, L{SemiRBMs&lt;SemiRBM&gt;}</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">        or L{GaussianRBMs&lt;GaussianRBM&gt;}.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">        B{References:}</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">                - Salakhutdinov, R. and Murray, I. (2008). I{On the Quantitative Analysis of</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">                Deep Belief Networks.}</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.__init__"></a><div id="MixBM.__init__-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="MixBM.__init__-toggle" onclick="return toggle('MixBM.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">model_one</tt><tt class="py-op">,</tt> <tt class="py-param">model_two</tt><tt class="py-op">,</tt> <tt class="py-param">weight</tt><tt class="py-op">=</tt><tt class="py-number">0.</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.__init__-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">                Initializes the parameters of the mixed model.</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">                @type  model_one: AbstractBM</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">                @param model_one: first model</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">                @type  model_two: AbstractBM</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">                @param model_two: second model</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">                 </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt id="link-6" class="py-name"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-6', 'SemiRBM', 'link-5');">SemiRBM</a></tt> <tt class="py-keyword">and</tt> <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt id="link-7" class="py-name"><a title="deepbelief.rbm.RBM" class="py-name" href="#" onclick="return doclink('link-7', 'RBM', 'link-1');">RBM</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                                <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">L</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">                        <tt class="py-keyword">elif</tt> <tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt id="link-8" class="py-name"><a title="deepbelief.rbm.RBM" class="py-name" href="#" onclick="return doclink('link-8', 'RBM', 'link-1');">RBM</a></tt> <tt class="py-keyword">and</tt> <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt id="link-9" class="py-name"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-9', 'SemiRBM', 'link-5');">SemiRBM</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                                <tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">L</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">                                <tt class="py-keyword">raise</tt> <tt class="py-name">TypeError</tt><tt class="py-op">(</tt><tt class="py-string">"The two models must have compatible types."</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">"The two models must have the same number of visible units."</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt> <tt class="py-op">=</tt> <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.__init__()=deepbelief.abstractbm.AbstractBM-class.html#__init__,Method deepbelief.basebm.BaseBM.__init__()=deepbelief.basebm.BaseBM-class.html#__init__,Method deepbelief.dbn.DBN.__init__()=deepbelief.dbn.DBN-class.html#__init__,Method deepbelief.estimator.Estimator.__init__()=deepbelief.estimator.Estimator-class.html#__init__,Method deepbelief.gaussianrbm.GaussianRBM.__init__()=deepbelief.gaussianrbm.GaussianRBM-class.html#__init__,Method deepbelief.mixbm.MixBM.__init__()=deepbelief.mixbm.MixBM-class.html#__init__,Method deepbelief.rbm.RBM.__init__()=deepbelief.rbm.RBM-class.html#__init__,Method deepbelief.semirbm.SemiRBM.__init__()=deepbelief.semirbm.SemiRBM-class.html#__init__"><a title="deepbelief.abstractbm.AbstractBM.__init__
+deepbelief.basebm.BaseBM.__init__
+deepbelief.dbn.DBN.__init__
+deepbelief.estimator.Estimator.__init__
+deepbelief.gaussianrbm.GaussianRBM.__init__
+deepbelief.mixbm.MixBM.__init__
+deepbelief.rbm.RBM.__init__
+deepbelief.semirbm.SemiRBM.__init__" class="py-name" href="#" onclick="return doclink('link-10', '__init__', 'link-10');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">X</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">model_one</tt><tt class="py-op">.</tt><tt class="py-name">Y</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">Y</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sampling_method</tt> <tt class="py-op">=</tt> <tt class="py-name">model_two</tt><tt class="py-op">.</tt><tt class="py-name">sampling_method</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">weight</tt> <tt class="py-op">=</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">model_one</tt> <tt class="py-op">=</tt> <tt class="py-name">model_one</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">model_two</tt> <tt class="py-op">=</tt> <tt class="py-name">model_two</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method deepbelief.mixbm.MixBM.tune()=deepbelief.mixbm.MixBM-class.html#tune"><a title="deepbelief.mixbm.MixBM.tune" class="py-name" href="#" onclick="return doclink('link-11', 'tune', 'link-11');">tune</a></tt><tt class="py-op">(</tt><tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.tune"></a><div id="MixBM.tune-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="MixBM.tune-toggle" onclick="return toggle('MixBM.tune');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#tune">tune</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">weight</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.tune-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.tune-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">                Tunes the parameters of the mixed model so that its energy becomes</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">                        - I{(1 - weight) * energy_one + weight * energy_two.}</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">                @type  weight: real</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">                @param weight: a weight between 0 and 1</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">weight</tt> <tt class="py-op">=</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-name">one</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">model_one</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                <tt class="py-name">two</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">model_two</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                <tt class="py-name">n</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">Y</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt> <tt class="py-op">==</tt> <tt id="link-12" class="py-name"><a title="deepbelief.rbm.RBM" class="py-name" href="#" onclick="return doclink('link-12', 'RBM', 'link-1');">RBM</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                        <tt class="py-comment"># adjust parameters of the mixed RBM</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">+</tt> <tt class="py-name">weight</tt> <tt class="py-op">*</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt> <tt class="py-op">==</tt> <tt id="link-13" class="py-name"><a title="deepbelief.gaussianrbm.GaussianRBM" class="py-name" href="#" onclick="return doclink('link-13', 'GaussianRBM', 'link-3');">GaussianRBM</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                        <tt class="py-name">tmp_one</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                        <tt class="py-name">tmp_two</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                        <tt class="py-comment"># adjust parameters of the mixed GaussianRBM</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> <tt class="py-op">/</tt> <tt class="py-name">np</tt><tt class="py-op">.</tt><tt class="py-name">sqrt</tt><tt class="py-op">(</tt><tt class="py-name">tmp_one</tt> <tt class="py-op">+</tt> <tt class="py-name">tmp_two</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">tmp_one</tt> <tt class="py-op">*</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">+</tt> <tt class="py-name">tmp_two</tt> <tt class="py-op">*</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">b</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">/</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">/</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sigma</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt> <tt class="py-op">==</tt> <tt id="link-14" class="py-name"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-14', 'SemiRBM', 'link-5');">SemiRBM</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                        <tt class="py-comment"># adjust parameters of the mixed SemiRBM</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">L</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">L</tt> <tt class="py-op">+</tt> <tt class="py-name">weight</tt> <tt class="py-op">*</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">L</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> <tt class="py-op">+</tt> <tt class="py-name">weight</tt> <tt class="py-op">*</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">b</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">c</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-name">n</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">one</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">weight</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">W</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">,</tt> <tt class="py-name">n</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">two</tt><tt class="py-op">.</tt><tt class="py-name">W</tt> <tt class="py-op">*</tt> <tt class="py-name">weight</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.forward"></a><div id="MixBM.forward-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="MixBM.forward-toggle" onclick="return toggle('MixBM.forward');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#forward">forward</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.forward-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.forward-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.forward()=deepbelief.abstractbm.AbstractBM-class.html#forward,Method deepbelief.dbn.DBN.forward()=deepbelief.dbn.DBN-class.html#forward,Method deepbelief.gaussianrbm.GaussianRBM.forward()=deepbelief.gaussianrbm.GaussianRBM-class.html#forward,Method deepbelief.mixbm.MixBM.forward()=deepbelief.mixbm.MixBM-class.html#forward,Method deepbelief.rbm.RBM.forward()=deepbelief.rbm.RBM-class.html#forward,Method deepbelief.semirbm.SemiRBM.forward()=deepbelief.semirbm.SemiRBM-class.html#forward"><a title="deepbelief.abstractbm.AbstractBM.forward
+deepbelief.dbn.DBN.forward
+deepbelief.gaussianrbm.GaussianRBM.forward
+deepbelief.mixbm.MixBM.forward
+deepbelief.rbm.RBM.forward
+deepbelief.semirbm.SemiRBM.forward" class="py-name" href="#" onclick="return doclink('link-15', 'forward', 'link-15');">forward</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.backward"></a><div id="MixBM.backward-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="MixBM.backward-toggle" onclick="return toggle('MixBM.backward');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#backward">backward</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.backward-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.backward-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.backward()=deepbelief.abstractbm.AbstractBM-class.html#backward,Method deepbelief.dbn.DBN.backward()=deepbelief.dbn.DBN-class.html#backward,Method deepbelief.gaussianrbm.GaussianRBM.backward()=deepbelief.gaussianrbm.GaussianRBM-class.html#backward,Method deepbelief.mixbm.MixBM.backward()=deepbelief.mixbm.MixBM-class.html#backward,Method deepbelief.rbm.RBM.backward()=deepbelief.rbm.RBM-class.html#backward,Method deepbelief.semirbm.SemiRBM.backward()=deepbelief.semirbm.SemiRBM-class.html#backward"><a title="deepbelief.abstractbm.AbstractBM.backward
+deepbelief.dbn.DBN.backward
+deepbelief.gaussianrbm.GaussianRBM.backward
+deepbelief.mixbm.MixBM.backward
+deepbelief.rbm.RBM.backward
+deepbelief.semirbm.SemiRBM.backward" class="py-name" href="#" onclick="return doclink('link-16', 'backward', 'link-16');">backward</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.train"></a><div id="MixBM.train-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="MixBM.train-toggle" onclick="return toggle('MixBM.train');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#train">train</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.train-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.train-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.train()=deepbelief.abstractbm.AbstractBM-class.html#train,Method deepbelief.dbn.DBN.train()=deepbelief.dbn.DBN-class.html#train,Method deepbelief.mixbm.MixBM.train()=deepbelief.mixbm.MixBM-class.html#train,Method deepbelief.semirbm.SemiRBM.train()=deepbelief.semirbm.SemiRBM-class.html#train"><a title="deepbelief.abstractbm.AbstractBM.train
+deepbelief.dbn.DBN.train
+deepbelief.mixbm.MixBM.train
+deepbelief.semirbm.SemiRBM.train" class="py-name" href="#" onclick="return doclink('link-17', 'train', 'link-17');">train</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="MixBM.sample"></a><div id="MixBM.sample-def"><a name="L111"></a><tt class="py-lineno">111</tt> <a class="py-toggle" href="#" id="MixBM.sample-toggle" onclick="return toggle('MixBM.sample');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#sample">sample</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">num_samples</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">burn_in_length</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-param">sample_spacing</tt><tt class="py-op">=</tt><tt class="py-number">20</tt><tt class="py-op">,</tt> <tt class="py-param">num_parallel_chains</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM.sample-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM.sample-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_sample</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">num_samples</tt><tt class="py-op">,</tt> <tt class="py-name">burn_in_length</tt><tt class="py-op">,</tt> <tt class="py-name">sample_spacing</tt><tt class="py-op">,</tt> <tt class="py-name">num_parallel_chains</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._free_energy"></a><div id="MixBM._free_energy-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="MixBM._free_energy-toggle" onclick="return toggle('MixBM._free_energy');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_free_energy">_free_energy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._free_energy-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._free_energy-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._free_energy_gradient"></a><div id="MixBM._free_energy_gradient-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="MixBM._free_energy_gradient-toggle" onclick="return toggle('MixBM._free_energy_gradient');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_free_energy_gradient">_free_energy_gradient</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._free_energy_gradient-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._free_energy_gradient-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy_gradient</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._ulogprob"></a><div id="MixBM._ulogprob-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="MixBM._ulogprob-toggle" onclick="return toggle('MixBM._ulogprob');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_ulogprob">_ulogprob</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">,</tt> <tt class="py-param">all_pairs</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._ulogprob-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._ulogprob-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">,</tt> <tt class="py-name">all_pairs</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._ulogprob_vis"></a><div id="MixBM._ulogprob_vis-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="MixBM._ulogprob_vis-toggle" onclick="return toggle('MixBM._ulogprob_vis');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_ulogprob_vis">_ulogprob_vis</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._ulogprob_vis-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._ulogprob_vis-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_vis</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._ulogprob_hid"></a><div id="MixBM._ulogprob_hid-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="MixBM._ulogprob_hid-toggle" onclick="return toggle('MixBM._ulogprob_hid');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_ulogprob_hid">_ulogprob_hid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._ulogprob_hid-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._ulogprob_hid-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_hid</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._clogprob_vis_hid"></a><div id="MixBM._clogprob_vis_hid-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="MixBM._clogprob_vis_hid-toggle" onclick="return toggle('MixBM._clogprob_vis_hid');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_clogprob_vis_hid">_clogprob_vis_hid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">,</tt> <tt class="py-param">all_pairs</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._clogprob_vis_hid-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._clogprob_vis_hid-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_clogprob_vis_hid</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">,</tt> <tt class="py-name">all_pairs</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._clogprob_hid_vis"></a><div id="MixBM._clogprob_hid_vis-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="MixBM._clogprob_hid_vis-toggle" onclick="return toggle('MixBM._clogprob_hid_vis');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_clogprob_hid_vis">_clogprob_hid_vis</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">,</tt> <tt class="py-param">Y</tt><tt class="py-op">,</tt> <tt class="py-param">all_pairs</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._clogprob_hid_vis-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._clogprob_hid_vis-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_clogprob_hid_vis</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">,</tt> <tt class="py-name">Y</tt><tt class="py-op">,</tt> <tt class="py-name">all_pairs</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="MixBM._centropy_hid_vis"></a><div id="MixBM._centropy_hid_vis-def"><a name="L135"></a><tt class="py-lineno">135</tt> <a class="py-toggle" href="#" id="MixBM._centropy_hid_vis-toggle" onclick="return toggle('MixBM._centropy_hid_vis');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.mixbm.MixBM-class.html#_centropy_hid_vis">_centropy_hid_vis</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MixBM._centropy_hid_vis-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="MixBM._centropy_hid_vis-expanded"><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rbm_type</tt><tt class="py-op">.</tt><tt class="py-name">_centropy_hid_vis</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:30 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

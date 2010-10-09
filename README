@@ -1,0 +1,13 @@
+Requirements:
+      * Python >= 2.5.0
+      * Numpy >= 1.3.0
+
+To start an experiment, just run
+
+      python code/experiments/<experiment>.py
+
+in the root directory. Have a look at the documentation
+
+     doc/index.html
+
+for more information.

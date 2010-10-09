@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.dbn.DBN</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        <a href="deepbelief.dbn-module.html">Module&nbsp;dbn</a> ::
+        Class&nbsp;DBN
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.dbn.DBN-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class DBN</h1><p class="nomargin-top"><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN">source&nbsp;code</a></span></p>
+<p>This class allows the construction of simpler deep belief network 
+  architectures. It facilitates training and sampling from <i>stacks</i> of
+  Boltzmann machines. However, this class does currently not support tree 
+  structures or other more complicated arrangements.</p>
+  <p>Only after the current top most layer has been trained using <a 
+  href="deepbelief.dbn.DBN-class.html#train" class="link">train</a>() 
+  should a new layer be added to the DBN using <a 
+  href="deepbelief.dbn.DBN-class.html#add_layer" 
+  class="link">add_layer</a>(). After adding a new layer, the lower layers 
+  can no longer be trained.</p>
+  <p><b>Example:</b></p>
+  <p>Create and train a first layer.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn = DBN(RBM(10, 20))
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[0].learning_rate = 1E-3
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[0].momentum = 0.8
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[0].weight_decay = 1E-2
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.train(data, num_epochs=50)</pre>
+  <p>Afterwards, add and train a second layer.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.add_layer(RBM(20, 50))
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[1].learning_rate = 1E-3
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[1].momentum = 0.8
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn[1].weight_decay = 1E-2
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.train(data, num_epochs=50)</pre>
+  <p>Note that each layer has its own set of training parameters.</p>
+  <p><b>References:</b></p>
+  <ul>
+    <li>
+      Hinton, G. E. and Salakhutdinov, R. (2006). <i>Reducing the 
+      Dimensionality of Data with Neural Networks.</i> Science.
+    </li>
+  </ul>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">model</span>)</span><br />
+      Initializes a deep belief network with one layer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">AbstractBM</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getitem__"></a><span class="summary-sig-name">__getitem__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Returns the model at the specified position in the hierarchy.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__len__"></a><span class="summary-sig-name">__len__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the number of layers.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.__len__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#forward" class="summary-sig-name">forward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>)</span><br />
+      Passes some input through the network and returns a sample for the 
+      top hidden units.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.forward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#backward" class="summary-sig-name">backward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">Y</span>)</span><br />
+      Passes a state from the top hidden units back to the visible units.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.backward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#add_layer" class="summary-sig-name">add_layer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">model</span>)</span><br />
+      Adds a new layer to the deep belief network.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.add_layer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#sample" class="summary-sig-name">sample</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_samples</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">burn_in_length</span>=<span class="summary-sig-default">100</span>,
+        <span class="summary-sig-arg">sample_spacing</span>=<span class="summary-sig-default">20</span>,
+        <span class="summary-sig-arg">num_parallel_chains</span>=<span class="summary-sig-default">1</span>)</span><br />
+      Draws samples from the model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.sample">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#estimate_log_partition_function" class="summary-sig-name">estimate_log_partition_function</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_ais_samples</span>=<span class="summary-sig-default">100</span>,
+        <span class="summary-sig-arg">beta_weights</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">layer</span>=<span class="summary-sig-default">-1</span>)</span><br />
+      Estimate the log of the partition function of the top layer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.estimate_log_partition_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#estimate_log_likelihood" class="summary-sig-name">estimate_log_likelihood</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>,
+        <span class="summary-sig-arg">num_samples</span>=<span class="summary-sig-default">200</span>)</span><br />
+      Estimate the log probability of a set of data samples.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.estimate_log_likelihood">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.dbn.DBN-class.html#train" class="summary-sig-name">train</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>,
+        <span class="summary-sig-arg">num_epochs</span>=<span class="summary-sig-default">50</span>,
+        <span class="summary-sig-arg">batch_size</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">shuffle</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">learning_rates</span>=<span class="summary-sig-default">None</span>)</span><br />
+      This method trains the top level of the DBN while keeping the other 
+      models fixed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.train">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">model</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes a deep belief network with one layer.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>model</code></strong> (AbstractBM) - first layer of the deep belief network</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="forward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">forward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.forward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Passes some input through the network and returns a sample for the top
+  hidden units.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - states of visible units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the top hidden units</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="backward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">backward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">Y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.backward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Passes a state from the top hidden units back to the visible 
+  units.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Y</code></strong> (array_like) - states of hidden units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the visible units</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_layer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_layer</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">model</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.add_layer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds a new layer to the deep belief network.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>model</code></strong> (AbstractBM) - Boltzmann machine which will be appended to the network</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>ValueError</strong></code> - raised if model is incompatible to the current top layer</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sample"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sample</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_samples</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">burn_in_length</span>=<span class="sig-default">100</span>,
+        <span class="sig-arg">sample_spacing</span>=<span class="sig-default">20</span>,
+        <span class="sig-arg">num_parallel_chains</span>=<span class="sig-default">1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.sample">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Draws samples from the model.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_samples</code></strong> (integer) - the number of samples to draw from the model</li>
+        <li><strong class="pname"><code>burn_in_length</code></strong> (integer) - the number of discarded initial samples</li>
+        <li><strong class="pname"><code>sample_spacing</code></strong> (integer) - return only every <i>n</i>-th sample of the Markov chain</li>
+        <li><strong class="pname"><code>num_parallel_chains</code></strong> (integer) - number of parallel Markov chains</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing the drawn samples in its columns</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="estimate_log_partition_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_partition_function</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_ais_samples</span>=<span class="sig-default">100</span>,
+        <span class="sig-arg">beta_weights</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">layer</span>=<span class="sig-default">-1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.estimate_log_partition_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimate the log of the partition function of the top layer. This 
+  method is a wrapper for the <a 
+  href="deepbelief.estimator.Estimator-class.html" 
+  class="link">Estimator</a> class and is provided for convenience.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_ais_samples</code></strong> (integer) - number of samples used to estimate the partition function</li>
+        <li><strong class="pname"><code>beta_weights</code></strong> (list) - annealing weights changing from zero to one</li>
+    </ul></dd>
+    <dt>Returns: real</dt>
+        <dd>log of the estimated partition function</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="estimate_log_likelihood"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_likelihood</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>,
+        <span class="sig-arg">num_samples</span>=<span class="sig-default">200</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.estimate_log_likelihood">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimate the log probability of a set of data samples. This method 
+  uses the <a href="deepbelief.estimator.Estimator-class.html" 
+  class="link">Estimator</a> class.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - data points</li>
+        <li><strong class="pname"><code>num_samples</code></strong> (integer) - number of Monte Carlo samples used to estimate unnormalized 
+          probabilities</li>
+    </ul></dd>
+    <dt>Returns: real</dt>
+        <dd>the average model log-likelihood in nats</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="train"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">train</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>,
+        <span class="sig-arg">num_epochs</span>=<span class="sig-default">50</span>,
+        <span class="sig-arg">batch_size</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">shuffle</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">learning_rates</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.dbn-pysrc.html#DBN.train">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This method trains the top level of the DBN while keeping the other 
+  models fixed.</p>
+  <p>If <code>batch_size</code> is 0, the model is trained on all samples 
+  at once. Otherwise, the training samples are split into batches and 
+  several updates are performed per epoch.  If <code>shuffle</code> is set 
+  to true, then the training samples are randomly shuffled before each new 
+  epoch.  If <code>learning_rates</code> is an array or a list with 
+  num_epochs entries, the learning rate at the <i>i</i>-th iteration is set
+  to its <i>i</i>-th entry. If <code>learning_rates</code> has 2 entries, 
+  the learning rate is linearly annealed over all epochs from the first to 
+  the second entry.</p>
+  <p><b>Example</b>:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.train(data, 50, 100, True, [1E-2, 1E-4])</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_epochs</code></strong> (integer) - number of iterations of the algorithm</li>
+        <li><strong class="pname"><code>batch_size</code></strong> (integer) - size of data batches used for training</li>
+        <li><strong class="pname"><code>shuffle</code></strong> (boolean) - randomize order of data before each iteration</li>
+        <li><strong class="pname"><code>learning_rates</code></strong> (array_like) - different learning rates for each epoch</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:29 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

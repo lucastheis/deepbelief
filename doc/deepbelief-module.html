@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;deepbelief
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package deepbelief</h1><p class="nomargin-top"><span class="codelink"><a href="deepbelief-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="heading">Introduction</h1>
+    <p>This package implements algorithms for training and evaluating deep 
+    belief networks (DBNs). Currently, the following variants of the 
+    restricted Boltzmann machine are available for constructing DBNs:</p>
+    <ul>
+      <li>
+        <a href="deepbelief.rbm.RBM-class.html" class="link">RBM</a>
+      </li>
+      <li>
+        <a href="deepbelief.gaussianrbm.GaussianRBM-class.html" 
+        class="link">GaussianRBM</a>
+      </li>
+      <li>
+        <a href="deepbelief.semirbm.SemiRBM-class.html" 
+        class="link">SemiRBM</a>
+      </li>
+    </ul>
+    <p>Also have a look a <a 
+    href="deepbelief.abstractbm.AbstractBM-class.html" 
+    class="link">AbstractBM</a> which specifies much of the interface and 
+    learning algorithms. In order to evaluate a trained DBN, the <a 
+    href="deepbelief.estimator.Estimator-class.html" 
+    class="link">Estimator</a> class can be used to estimate the the 
+    likelihood of the trained model.</p>
+  <h1 class="heading">Miscellaneous</h1>
+    <p>For questions, comments or bug reports, contact <a 
+    href="mailto:lucas@tuebingen.mpg.de" target="_top">Lucas Theis</a>. 
+    This code is published under the <a 
+    href="http://www.opensource.org/licenses/mit-license.php" 
+    target="_top">MIT License</a>.</p>
+  <h1 class="heading">Quick Tutorial</h1>
+    <p>Assume that <code>data</code> is a 10 by 1000 numpy matrix with real
+    entries containing 1000 data points.  We want a deep belief network to 
+    learn the distribution of the data.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> data.shape
+<span class="py-output">(10, 1000)</span></pre>
+    <p>Import the relevant building blocks for constructing deep belief 
+    networks.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> deepbelief <span class="py-keyword">import</span> RBM, GaussianRBM, DBN</pre>
+    <p>Create a first layer with 10 visible units and 50 hidden units. The 
+    <a href="deepbelief.gaussianrbm.GaussianRBM-class.html" 
+    class="link">GaussianRBM</a> is suited for modeling continuous 
+    data.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn = DBN(GaussianRBM(10, 50))</pre>
+    <p>Split the data into batches of size 10 and train the first layer for
+    50 iterations.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.train(data, num_epochs=50, batch_size=10)</pre>
+    <p>Add a second layer to the network.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.add_layer(RBM(50, 50))</pre>
+    <p>Train the second layer.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>dbn.train(data, num_epochs=50, batch_size=10)</pre>
+    <p>Generate another 500 data points by sampling from the trained 
+    model.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>samples = dbn.sample(500)</pre>
+
+<!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Submodules</span></td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="deepbelief.abstractbm-module.html">deepbelief.abstractbm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.basebm-module.html">deepbelief.basebm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.dbn-module.html">deepbelief.dbn</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.estimator-module.html">deepbelief.estimator</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.gaussianrbm-module.html">deepbelief.gaussianrbm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.mixbm-module.html">deepbelief.mixbm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.rbm-module.html">deepbelief.rbm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.semirbm-module.html">deepbelief.semirbm</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="deepbelief.utils-module.html">deepbelief.utils</a></strong>    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'deepbelief'"><code class="variable-quote">'</code><code class="variable-string">deepbelief</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:29 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

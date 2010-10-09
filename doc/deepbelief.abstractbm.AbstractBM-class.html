@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.abstractbm.AbstractBM</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        <a href="deepbelief.abstractbm-module.html">Module&nbsp;abstractbm</a> ::
+        Class&nbsp;AbstractBM
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.abstractbm.AbstractBM-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AbstractBM</h1><p class="nomargin-top"><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="deepbelief.rbm.RBM-class.html">rbm.RBM</a></li><li>, <a href="deepbelief.gaussianrbm.GaussianRBM-class.html">gaussianrbm.GaussianRBM</a></li><li>, <a href="deepbelief.semirbm.SemiRBM-class.html">semirbm.SemiRBM</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>Provides an interface and common functionality for latent-variable 
+  Boltzmann machines, such as contrastive divergence learning, Gibbs 
+  sampling and hybrid Monte Carlo sampling.</p>
+  <p><b>References:</b></p>
+  <ul>
+    <li>
+      Hinton, G. E. (2002). <i>Training Products of Experts by Minimizing 
+      Contrastive Divergence.</i> Neural Computation.
+    </li>
+    <li>
+      Neal, R. (1996). <i>Bayesian Learning for Neural Networks.</i> 
+      Springer Verlag.
+    </li>
+  </ul>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_visibles</span>,
+        <span class="summary-sig-arg">num_hiddens</span>)</span><br />
+      Initializes common parameters of Boltzmann machines.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#backward" class="summary-sig-name">backward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">Y</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">X</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Conditionally samples the visible units.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.backward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#clear" class="summary-sig-name">clear</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Reset variables.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#estimate_log_likelihood" class="summary-sig-name">estimate_log_likelihood</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>)</span><br />
+      Estimate the log-likelihood of the model with respect to a set of 
+      data samples.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.estimate_log_likelihood">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#estimate_log_partition_function" class="summary-sig-name">estimate_log_partition_function</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_ais_samples</span>=<span class="summary-sig-default">100</span>,
+        <span class="summary-sig-arg">beta_weights</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">layer</span>=<span class="summary-sig-default">-1</span>)</span><br />
+      Estimate the logarithm of the partition function using annealed 
+      importance sampling.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.estimate_log_partition_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#forward" class="summary-sig-name">forward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Conditionally samples the hidden units.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.forward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#sample" class="summary-sig-name">sample</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_samples</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">burn_in_length</span>=<span class="summary-sig-default">100</span>,
+        <span class="summary-sig-arg">sample_spacing</span>=<span class="summary-sig-default">20</span>,
+        <span class="summary-sig-arg">num_parallel_chains</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">X</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Draws samples from the model using Gibbs or hybrid Monte Carlo 
+      sampling.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.sample">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.abstractbm.AbstractBM-class.html#train" class="summary-sig-name">train</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>)</span><br />
+      Trains the parameters of the BM on a batch of data samples.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.train">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="GIBBS"></a><span class="summary-name">GIBBS</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="HMC"></a><span class="summary-name">HMC</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MF"></a><span class="summary-name">MF</span> = <code title="2">2</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="W"></a><span class="summary-name">W</span><br />
+      weight matrix connecting visible and hidden units
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="X"></a><span class="summary-name">X</span><br />
+      states of the visible units
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="Y"></a><span class="summary-name">Y</span><br />
+      states of the hidden units
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="b"></a><span class="summary-name">b</span><br />
+      visible biases
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="c"></a><span class="summary-name">c</span><br />
+      hidden biases
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+        <a name="cd_steps"></a><span class="summary-name">cd_steps</span><br />
+      number of Gibbs updates to approximate learning gradient
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="learning_rate"></a><span class="summary-name">learning_rate</span><br />
+      step width of gradient descent learning algorithm
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">boolean</span>
+    </td><td class="summary">
+        <a name="lf_adaptive"></a><span class="summary-name">lf_adaptive</span><br />
+      automatically adjust <code>lf_step_size</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="lf_step_size"></a><span class="summary-name">lf_step_size</span><br />
+      size of one leapfrog step
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+        <a name="lf_steps"></a><span class="summary-name">lf_steps</span><br />
+      number of <i>leapfrog</i> steps in <a 
+      href="deepbelief.abstractbm.AbstractBM-class.html#HMC" 
+      class="link">HMC</a> sampling
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="momentum"></a><span class="summary-name">momentum</span><br />
+      parameter of the learning algorithm
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">boolean</span>
+    </td><td class="summary">
+        <a name="persistent"></a><span class="summary-name">persistent</span><br />
+      use persistent Markov chains to approximate learning gradient
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+        <a name="sampling_method"></a><span class="summary-name">sampling_method</span><br />
+      method for drawing samples (typically <a 
+      href="deepbelief.abstractbm.AbstractBM-class.html#GIBBS" 
+      class="link">GIBBS</a>)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="sparseness"></a><span class="summary-name">sparseness</span><br />
+      encourage sparse activation of the hidden units by modifying the 
+      biases
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="sparseness_target"></a><span class="summary-name">sparseness_target</span><br />
+      targeted level of activity
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="weight_decay"></a><span class="summary-name">weight_decay</span><br />
+      prevents the weights from becoming too large
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_visibles</span>,
+        <span class="sig-arg">num_hiddens</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes common parameters of Boltzmann machines.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_visibles</code></strong> (integer) - number of visible units</li>
+        <li><strong class="pname"><code>num_hiddens</code></strong> (integer) - number of hidden units</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="backward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">backward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">Y</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">X</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.backward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Conditionally samples the visible units. If <code>Y</code> or 
+  <code>X</code> is given, the state of the Boltzmann machine is changed 
+  prior to sampling.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Y</code></strong> (array_like) - states of hidden units</li>
+        <li><strong class="pname"><code>X</code></strong> (array_like) - states of visible units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the visible units</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.clear">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Reset variables. This method can help to free memory.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="estimate_log_likelihood"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_likelihood</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.estimate_log_likelihood">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimate the log-likelihood of the model with respect to a set of data
+  samples. This method uses the <a 
+  href="deepbelief.estimator.Estimator-class.html" 
+  class="link">Estimator</a> class.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - data points</li>
+    </ul></dd>
+    <dt>Returns: real</dt>
+        <dd>the average model log-likelihood in nats</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="estimate_log_partition_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">estimate_log_partition_function</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_ais_samples</span>=<span class="sig-default">100</span>,
+        <span class="sig-arg">beta_weights</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">layer</span>=<span class="sig-default">-1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.estimate_log_partition_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Estimate the logarithm of the partition function using annealed 
+  importance sampling. This method is a wrapper for the <a 
+  href="deepbelief.estimator.Estimator-class.html" 
+  class="link">Estimator</a> class and is provided for convenience.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_ais_samples</code></strong> (integer) - number of samples used to estimate the partition function</li>
+        <li><strong class="pname"><code>beta_weights</code></strong> (list) - annealing weights ranging from zero to one</li>
+    </ul></dd>
+    <dt>Returns: real</dt>
+        <dd>log of the estimated partition function</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="forward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">forward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.forward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Conditionally samples the hidden units. If no input is given, the 
+  current state of the visible units is used.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - states of visible units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the hidden units</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sample"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sample</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_samples</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">burn_in_length</span>=<span class="sig-default">100</span>,
+        <span class="sig-arg">sample_spacing</span>=<span class="sig-default">20</span>,
+        <span class="sig-arg">num_parallel_chains</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">X</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.sample">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Draws samples from the model using Gibbs or hybrid Monte Carlo 
+  sampling.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_samples</code></strong> (integer) - the number of samples to draw from the model</li>
+        <li><strong class="pname"><code>burn_in_length</code></strong> (integer) - the number of discarded initial samples</li>
+        <li><strong class="pname"><code>sample_spacing</code></strong> (integer) - return only every <i>n</i>-th sample of the Markov chain</li>
+        <li><strong class="pname"><code>num_parallel_chains</code></strong> (integer) - number of parallel Markov chains</li>
+        <li><strong class="pname"><code>X</code></strong> (array_like) - initial state(s) of Markov chain(s)</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing the drawn samples in its columns</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="train"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">train</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.abstractbm-pysrc.html#AbstractBM.train">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Trains the parameters of the BM on a batch of data samples. The data 
+  stored in <code>X</code> is used to estimate the likelihood gradient and 
+  one step of gradient ascend is performed.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> (array_like) - example states of the visible units</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:29 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

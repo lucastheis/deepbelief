@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.semirbm.SemiRBM</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        <a href="deepbelief.semirbm-module.html">Module&nbsp;semirbm</a> ::
+        Class&nbsp;SemiRBM
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.semirbm.SemiRBM-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SemiRBM</h1><p class="nomargin-top"><span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="deepbelief.abstractbm.AbstractBM-class.html">abstractbm.AbstractBM</a> --+
+                        |
+                       <strong class="uidshort">SemiRBM</strong>
+</pre>
+
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="deepbelief.mixbm.MixBM-class.html">mixbm.MixBM</a></li><li>, <a href="deepbelief.basebm.BaseBM-class.html">basebm.BaseBM</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>An implementation of the semi-restricted Boltzmann machine. In 
+  contrast to the <a href="deepbelief.rbm.RBM-class.html" 
+  class="link">RBM</a>, the <a href="deepbelief.semirbm.SemiRBM-class.html"
+  class="link">SemiRBM</a> can also have lateral connections between 
+  visible units.</p>
+  <p><b>References:</b></p>
+  <ul>
+    <li>
+      Osindero, S. and Hinton, G.E. (2008). <i>Modeling image patches with 
+      a directed hiarchy of Markov random fields.</i>
+    </li>
+  </ul>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.semirbm.SemiRBM-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">num_visibles</span>,
+        <span class="summary-sig-arg">num_hiddens</span>)</span><br />
+      Initializes the parameters of the SemiRBM.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.semirbm.SemiRBM-class.html#backward" class="summary-sig-name">backward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">Y</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">X</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Conditionally samples the visible units using either sequential Gibbs
+      sampling or parallel mean field updates.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.backward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.semirbm.SemiRBM-class.html#forward" class="summary-sig-name">forward</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Conditionally samples the hidden units.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.forward">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="deepbelief.semirbm.SemiRBM-class.html#train" class="summary-sig-name">train</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">X</span>)</span><br />
+      Trains the parameters of the BM on a batch of data samples.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.train">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="deepbelief.abstractbm.AbstractBM-class.html">abstractbm.AbstractBM</a></code></b>:
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#clear">clear</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#estimate_log_likelihood">estimate_log_likelihood</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#estimate_log_partition_function">estimate_log_partition_function</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#sample">sample</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="deepbelief.abstractbm.AbstractBM-class.html">abstractbm.AbstractBM</a></code></b>:
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#GIBBS">GIBBS</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#HMC">HMC</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#MF">MF</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">matrix</span>
+    </td><td class="summary">
+        <a name="L"></a><span class="summary-name">L</span><br />
+      weight matrix connecting visible units
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="momentum_lateral"></a><span class="summary-name">momentum_lateral</span><br />
+      momentum for lateral connections
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+        <a name="sampling_method"></a><span class="summary-name">sampling_method</span><br />
+      method for drawing samples (typically <a 
+      href="deepbelief.abstractbm.AbstractBM-class.html#GIBBS" 
+      class="link">GIBBS</a>)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">real</span>
+    </td><td class="summary">
+        <a name="weight_decay_lateral"></a><span class="summary-name">weight_decay_lateral</span><br />
+      weight decay for lateral connections
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="deepbelief.abstractbm.AbstractBM-class.html">abstractbm.AbstractBM</a></code></b>:
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#W">W</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#X">X</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#Y">Y</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#b">b</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#c">c</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#cd_steps">cd_steps</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#learning_rate">learning_rate</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#lf_adaptive">lf_adaptive</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#lf_step_size">lf_step_size</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#lf_steps">lf_steps</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#momentum">momentum</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#persistent">persistent</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#sparseness">sparseness</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#sparseness_target">sparseness_target</a></code>,
+      <code><a href="deepbelief.abstractbm.AbstractBM-class.html#weight_decay">weight_decay</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">num_visibles</span>,
+        <span class="sig-arg">num_hiddens</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes the parameters of the SemiRBM.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>num_visibles</code></strong> (integer) - number of visible units</li>
+        <li><strong class="pname"><code>num_hiddens</code></strong> (integer) - number of hidden units</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="deepbelief.abstractbm.AbstractBM-class.html#__init__">abstractbm.AbstractBM.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="backward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">backward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">Y</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">X</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.backward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Conditionally samples the visible units using either sequential Gibbs 
+  sampling or parallel mean field updates.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Y</code></strong> (array_like) - states of hidden units</li>
+        <li><strong class="pname"><code>X</code></strong> (array_like) - states of visible units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the visible units</dd>
+    <dt>Overrides:
+        <a href="deepbelief.abstractbm.AbstractBM-class.html#backward">abstractbm.AbstractBM.backward</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="forward"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">forward</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.forward">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Conditionally samples the hidden units. If no input is given, the 
+  current state of the visible units is used.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> - states of visible units</li>
+    </ul></dd>
+    <dt>Returns: matrix</dt>
+        <dd>a matrix containing states for the hidden units</dd>
+    <dt>Overrides:
+        <a href="deepbelief.abstractbm.AbstractBM-class.html#forward">abstractbm.AbstractBM.forward</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="train"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">train</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">X</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="deepbelief.semirbm-pysrc.html#SemiRBM.train">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Trains the parameters of the BM on a batch of data samples. The data 
+  stored in <code>X</code> is used to estimate the likelihood gradient and 
+  one step of gradient ascend is performed.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>X</code></strong> - example states of the visible units</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="deepbelief.abstractbm.AbstractBM-class.html#train">abstractbm.AbstractBM.train</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:29 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

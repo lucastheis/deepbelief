@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>deepbelief.estimator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="deepbelief-module.html">Package&nbsp;deepbelief</a> ::
+        Module&nbsp;estimator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="deepbelief.estimator-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="deepbelief.estimator-module.html">Module deepbelief.estimator</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">numpy</tt> <tt class="py-keyword">as</tt> <tt class="py-name">np</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module deepbelief.utils=deepbelief.utils-module.html"><a title="deepbelief.utils" class="py-name" href="#" onclick="return doclink('link-0', 'utils', 'link-0');">utils</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module deepbelief.abstractbm=deepbelief.abstractbm-module.html"><a title="deepbelief.abstractbm" class="py-name" href="#" onclick="return doclink('link-1', 'abstractbm', 'link-1');">abstractbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class deepbelief.abstractbm.AbstractBM=deepbelief.abstractbm.AbstractBM-class.html"><a title="deepbelief.abstractbm.AbstractBM" class="py-name" href="#" onclick="return doclink('link-2', 'AbstractBM', 'link-2');">AbstractBM</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module deepbelief.mixbm=deepbelief.mixbm-module.html"><a title="deepbelief.mixbm" class="py-name" href="#" onclick="return doclink('link-3', 'mixbm', 'link-3');">mixbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class deepbelief.mixbm.MixBM=deepbelief.mixbm.MixBM-class.html"><a title="deepbelief.mixbm.MixBM" class="py-name" href="#" onclick="return doclink('link-4', 'MixBM', 'link-4');">MixBM</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name" targets="Module deepbelief.basebm=deepbelief.basebm-module.html"><a title="deepbelief.basebm" class="py-name" href="#" onclick="return doclink('link-5', 'basebm', 'link-5');">basebm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class deepbelief.basebm.BaseBM=deepbelief.basebm.BaseBM-class.html"><a title="deepbelief.basebm.BaseBM" class="py-name" href="#" onclick="return doclink('link-6', 'BaseBM', 'link-6');">BaseBM</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name" targets="Module deepbelief.semirbm=deepbelief.semirbm-module.html"><a title="deepbelief.semirbm" class="py-name" href="#" onclick="return doclink('link-7', 'semirbm', 'link-7');">semirbm</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class deepbelief.semirbm.SemiRBM=deepbelief.semirbm.SemiRBM-class.html"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-8', 'SemiRBM', 'link-8');">SemiRBM</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name" targets="Module deepbelief.dbn=deepbelief.dbn-module.html"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-9', 'dbn', 'link-9');">dbn</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Class deepbelief.dbn.DBN=deepbelief.dbn.DBN-class.html"><a title="deepbelief.dbn.DBN" class="py-name" href="#" onclick="return doclink('link-10', 'DBN', 'link-10');">DBN</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">'MIT License &lt;http://www.opensource.org/licenses/mit-license.php&gt;'</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Lucas Theis &lt;lucas@tuebingen.mpg.de&gt;'</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-name">__docformat__</tt> <tt class="py-op">=</tt> <tt class="py-string">'epytext'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="Estimator"></a><div id="Estimator-def"><a name="L13"></a><tt class="py-lineno"> 13</tt> <a class="py-toggle" href="#" id="Estimator-toggle" onclick="return toggle('Estimator');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="deepbelief.estimator.Estimator-class.html">Estimator</a><tt class="py-op">:</tt> </tt>
+</div><div id="Estimator-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Estimator-expanded"><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">        This class implements annealed importance sampling for the estimation of</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">        partition functions and means to estimate log-probabilities of data</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">        samples.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">        Always estimate the partition function of a deep belief network first.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">                &gt;&gt;&gt; dbn.estimate_log_partition_function(self, num_ais_samples=100, beta_weights=np.arange(0, 1, 1000))</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">        The choice of the parameters is crucial. More samples and weights will lead</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        to less biased estimates. Only after the partition function has been</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">        estimated with appropriate parameters should L{estimate_log_probability} be</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">        called.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">                &gt;&gt;&gt; logprob, lowerbound = dbn.estimate_log_probability(data, num_samples=100)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">        Taking more samples will reduce the variance of the estimates.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">        If one of the lower layers is an instance of L{SemiRBM}, then</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">        L{estimate_log_partition_function} also has to be run for this layer with</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">        a I{large} value for C{num_ais_samples}.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        B{References:}</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">                - Salakhutdinov, R. and Murray, I. (2008). I{On the Quantitative Analysis</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">                of Deep Belief Networks.}</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">                - Theis, L., Gerwinn, S., Sinz, F. Bethge, M. (2010). I{Likelihood</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">                Estimation in Deep Belief Networks.}</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="Estimator.__init__"></a><div id="Estimator.__init__-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="Estimator.__init__-toggle" onclick="return toggle('Estimator.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.estimator.Estimator-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dbn</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Estimator.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="Estimator.__init__-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">                Prepare the sampler.</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-11', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="deepbelief.dbn.DBN" class="py-name" href="#" onclick="return doclink('link-12', 'DBN', 'link-10');">DBN</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-13', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name"><a title="deepbelief.abstractbm.AbstractBM" class="py-name" href="#" onclick="return doclink('link-14', 'AbstractBM', 'link-2');">AbstractBM</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                                <tt id="link-15" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-15', 'dbn', 'link-9');">dbn</a></tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="deepbelief.dbn.DBN" class="py-name" href="#" onclick="return doclink('link-16', 'DBN', 'link-10');">DBN</a></tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-17', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                                <tt class="py-keyword">raise</tt> <tt class="py-name">TypeError</tt><tt class="py-op">(</tt><tt class="py-string">'DBN or RBM expected.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-18', 'dbn', 'link-9');">dbn</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-19', 'dbn', 'link-9');">dbn</a></tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-20', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-21', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-string">'_ais_logz'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-22', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-23', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_var</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-24', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_samples</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-25', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logweights</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="Estimator.estimate_log_partition_function"></a><div id="Estimator.estimate_log_partition_function-def"><a name="L65"></a><tt class="py-lineno"> 65</tt> <a class="py-toggle" href="#" id="Estimator.estimate_log_partition_function-toggle" onclick="return toggle('Estimator.estimate_log_partition_function');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.estimator.Estimator-class.html#estimate_log_partition_function">estimate_log_partition_function</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">num_ais_samples</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-param">beta_weights</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-param">layer</tt><tt class="py-op">=</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Estimator.estimate_log_partition_function-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="Estimator.estimate_log_partition_function-expanded"><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">                Estimate the log of the partition function.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">                C{beta_weights} should be a list of monotonically increasing values ranging</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">                from 0 to 1. See Salakhutdinov &amp; Murray (2008) for details on how to set</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">                the parameters.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">                @type  num_ais_samples: integer</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">                @param num_ais_samples: number of samples used to estimate the partition</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">                function</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">                @type  beta_weights: array_like</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">                @param beta_weights: annealing weights ranging from zero to one</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">                @type  layer: integer</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">                @param layer: can be used to estimate the partition function of one</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">                of the lower layers</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype:  real</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">                @return: the estimated log partition function</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                <tt class="py-name">bsbm</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="deepbelief.basebm.BaseBM" class="py-name" href="#" onclick="return doclink('link-26', 'BaseBM', 'link-6');">BaseBM</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-27', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                <tt class="py-name">mxbm</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="deepbelief.mixbm.MixBM" class="py-name" href="#" onclick="return doclink('link-28', 'MixBM', 'link-4');">MixBM</a></tt><tt class="py-op">(</tt><tt class="py-name">bsbm</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-29', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-comment"># settings relevant only for SemiRBM</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt class="py-name">sampling_method</tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="deepbelief.abstractbm.AbstractBM" class="py-name" href="#" onclick="return doclink('link-30', 'AbstractBM', 'link-2');">AbstractBM</a></tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable deepbelief.abstractbm.AbstractBM.GIBBS=deepbelief.abstractbm.AbstractBM-class.html#GIBBS"><a title="deepbelief.abstractbm.AbstractBM.GIBBS" class="py-name" href="#" onclick="return doclink('link-31', 'GIBBS', 'link-31');">GIBBS</a></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt class="py-name">sampling_method</tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name"><a title="deepbelief.abstractbm.AbstractBM" class="py-name" href="#" onclick="return doclink('link-32', 'AbstractBM', 'link-2');">AbstractBM</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="deepbelief.abstractbm.AbstractBM.GIBBS" class="py-name" href="#" onclick="return doclink('link-33', 'GIBBS', 'link-31');">GIBBS</a></tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt class="py-name">num_lateral_updates</tt> <tt class="py-op">=</tt> <tt class="py-number">5</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                <tt class="py-comment"># draw (independent) samples from the base model</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-name">X</tt> <tt class="py-op">=</tt> <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.sample()=deepbelief.abstractbm.AbstractBM-class.html#sample,Method deepbelief.dbn.DBN.sample()=deepbelief.dbn.DBN-class.html#sample,Method deepbelief.mixbm.MixBM.sample()=deepbelief.mixbm.MixBM-class.html#sample"><a title="deepbelief.abstractbm.AbstractBM.sample
+deepbelief.dbn.DBN.sample
+deepbelief.mixbm.MixBM.sample" class="py-name" href="#" onclick="return doclink('link-34', 'sample', 'link-34');">sample</a></tt><tt class="py-op">(</tt><tt class="py-name">num_ais_samples</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-comment"># compute importance weights</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                <tt class="py-name">logweights</tt> <tt class="py-op">=</tt> <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy</tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">beta</tt> <tt class="py-keyword">in</tt> <tt class="py-name">beta_weights</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                        <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method deepbelief.mixbm.MixBM.tune()=deepbelief.mixbm.MixBM-class.html#tune"><a title="deepbelief.mixbm.MixBM.tune" class="py-name" href="#" onclick="return doclink('link-35', 'tune', 'link-35');">tune</a></tt><tt class="py-op">(</tt><tt class="py-name">beta</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                        <tt class="py-name">logweights</tt> <tt class="py-op">-=</tt> <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy</tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                        <tt class="py-name">Y</tt> <tt class="py-op">=</tt> <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.forward()=deepbelief.abstractbm.AbstractBM-class.html#forward,Method deepbelief.dbn.DBN.forward()=deepbelief.dbn.DBN-class.html#forward,Method deepbelief.gaussianrbm.GaussianRBM.forward()=deepbelief.gaussianrbm.GaussianRBM-class.html#forward,Method deepbelief.mixbm.MixBM.forward()=deepbelief.mixbm.MixBM-class.html#forward,Method deepbelief.rbm.RBM.forward()=deepbelief.rbm.RBM-class.html#forward,Method deepbelief.semirbm.SemiRBM.forward()=deepbelief.semirbm.SemiRBM-class.html#forward"><a title="deepbelief.abstractbm.AbstractBM.forward
+deepbelief.dbn.DBN.forward
+deepbelief.gaussianrbm.GaussianRBM.forward
+deepbelief.mixbm.MixBM.forward
+deepbelief.rbm.RBM.forward
+deepbelief.semirbm.SemiRBM.forward" class="py-name" href="#" onclick="return doclink('link-36', 'forward', 'link-36');">forward</a></tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                        <tt class="py-name">X</tt> <tt class="py-op">=</tt> <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.backward()=deepbelief.abstractbm.AbstractBM-class.html#backward,Method deepbelief.dbn.DBN.backward()=deepbelief.dbn.DBN-class.html#backward,Method deepbelief.gaussianrbm.GaussianRBM.backward()=deepbelief.gaussianrbm.GaussianRBM-class.html#backward,Method deepbelief.mixbm.MixBM.backward()=deepbelief.mixbm.MixBM-class.html#backward,Method deepbelief.rbm.RBM.backward()=deepbelief.rbm.RBM-class.html#backward,Method deepbelief.semirbm.SemiRBM.backward()=deepbelief.semirbm.SemiRBM-class.html#backward"><a title="deepbelief.abstractbm.AbstractBM.backward
+deepbelief.dbn.DBN.backward
+deepbelief.gaussianrbm.GaussianRBM.backward
+deepbelief.mixbm.MixBM.backward
+deepbelief.rbm.RBM.backward
+deepbelief.semirbm.SemiRBM.backward" class="py-name" href="#" onclick="return doclink('link-37', 'backward', 'link-37');">backward</a></tt><tt class="py-op">(</tt><tt class="py-name">Y</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                        <tt class="py-name">logweights</tt> <tt class="py-op">+=</tt> <tt class="py-name">mxbm</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy</tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-name">logweights</tt> <tt class="py-op">-=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-38', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_free_energy</tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                <tt class="py-comment"># store results for later use</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-39', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logweights</tt> <tt class="py-op">=</tt> <tt class="py-name">logweights</tt> <tt class="py-op">+</tt> <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt class="py-name">logz</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-40', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="deepbelief.utils" class="py-name" href="#" onclick="return doclink('link-41', 'utils', 'link-0');">utils</a></tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Function deepbelief.utils.logmeanexp()=deepbelief.utils-module.html#logmeanexp"><a title="deepbelief.utils.logmeanexp" class="py-name" href="#" onclick="return doclink('link-42', 'logmeanexp', 'link-42');">logmeanexp</a></tt><tt class="py-op">(</tt><tt class="py-name">logweights</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt class="py-name">logz</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-43', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_var</tt> <tt class="py-op">=</tt> <tt class="py-name">np</tt><tt class="py-op">.</tt><tt class="py-name">var</tt><tt class="py-op">(</tt><tt class="py-name">np</tt><tt class="py-op">.</tt><tt class="py-name">exp</tt><tt class="py-op">(</tt><tt class="py-name">logweights</tt> <tt class="py-op">+</tt> <tt class="py-name">bsbm</tt><tt class="py-op">.</tt><tt class="py-name">logz</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-name">num_ais_samples</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-44', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_samples</tt> <tt class="py-op">=</tt> <tt class="py-name">X</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-45', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">layer</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt> </tt>
+</div><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="Estimator.estimate_log_probability"></a><div id="Estimator.estimate_log_probability-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="Estimator.estimate_log_probability-toggle" onclick="return toggle('Estimator.estimate_log_probability');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="deepbelief.estimator.Estimator-class.html#estimate_log_probability">estimate_log_probability</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">X</tt><tt class="py-op">,</tt> <tt class="py-param">num_samples</tt><tt class="py-op">=</tt><tt class="py-number">200</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Estimator.estimate_log_probability-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="Estimator.estimate_log_probability-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">                Estimates the log-probability in nats.</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">                </tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">                This method returns two values: Optimistic but consistent estimates of</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">                the log probability of the given data samples and estimated lower bounds.</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">                The parameter C{num_samples} is only relevant for DBNs with at least 2</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">                layers.  L{estimate_log_partition_function}() should be run with</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">                appropriate parameters beforehand, otherwise the probability estimates</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">                will be very poor.</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">                @type  X: array_like</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">                @param X: the data points for which to estimate the log-probability</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">                @type  num_samples: integer</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">                @param num_samples: the number of Monte Carlo samples used to estimate the</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring">                unnormalized probability of the data samples</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype:  tuple</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">                @return: a tuple consisting of the estimated log-probabilities (first entry)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">                and estimated lower bounds (second entry)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                <tt class="py-comment"># estimate partition function if not done yet</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-46', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method deepbelief.abstractbm.AbstractBM.estimate_log_partition_function()=deepbelief.abstractbm.AbstractBM-class.html#estimate_log_partition_function,Method deepbelief.dbn.DBN.estimate_log_partition_function()=deepbelief.dbn.DBN-class.html#estimate_log_partition_function,Method deepbelief.estimator.Estimator.estimate_log_partition_function()=deepbelief.estimator.Estimator-class.html#estimate_log_partition_function"><a title="deepbelief.abstractbm.AbstractBM.estimate_log_partition_function
+deepbelief.dbn.DBN.estimate_log_partition_function
+deepbelief.estimator.Estimator.estimate_log_partition_function" class="py-name" href="#" onclick="return doclink('link-47', 'estimate_log_partition_function', 'link-47');">estimate_log_partition_function</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-48', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                        <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-49', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-50', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-51" class="py-name"><a title="deepbelief.semirbm.SemiRBM" class="py-name" href="#" onclick="return doclink('link-51', 'SemiRBM', 'link-8');">SemiRBM</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">                                        <tt class="py-comment"># needed for estimating SemiRBM marginals</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">                                        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-52', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-53', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="deepbelief.abstractbm.AbstractBM.estimate_log_partition_function
+deepbelief.dbn.DBN.estimate_log_partition_function
+deepbelief.estimator.Estimator.estimate_log_partition_function" class="py-name" href="#" onclick="return doclink('link-54', 'estimate_log_partition_function', 'link-47');">estimate_log_partition_function</a></tt><tt class="py-op">(</tt><tt class="py-name">layer</tt><tt class="py-op">=</tt><tt class="py-name">l</tt><tt class="py-op">)</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">                        <tt class="py-comment"># allocate memory for log importance weights</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                        <tt class="py-name">logiws</tt> <tt class="py-op">=</tt> <tt class="py-name">np</tt><tt class="py-op">.</tt><tt class="py-name">asmatrix</tt><tt class="py-op">(</tt><tt class="py-name">np</tt><tt class="py-op">.</tt><tt class="py-name">zeros</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">num_samples</tt><tt class="py-op">,</tt> <tt class="py-name">X</tt><tt class="py-op">.</tt><tt class="py-name">shape</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                        <tt class="py-comment"># Monte Carlo estimation of unnormalized probability</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">num_samples</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                                <tt class="py-name">samples</tt> <tt class="py-op">=</tt> <tt class="py-name">X</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">                                <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-55', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">                                        <tt class="py-name">logiws</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">+=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-56', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_vis</tt><tt class="py-op">(</tt><tt class="py-name">samples</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                                        <tt class="py-name">samples</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-57', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="deepbelief.abstractbm.AbstractBM.forward
+deepbelief.dbn.DBN.forward
+deepbelief.gaussianrbm.GaussianRBM.forward
+deepbelief.mixbm.MixBM.forward
+deepbelief.rbm.RBM.forward
+deepbelief.semirbm.SemiRBM.forward" class="py-name" href="#" onclick="return doclink('link-58', 'forward', 'link-36');">forward</a></tt><tt class="py-op">(</tt><tt class="py-name">samples</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                                        <tt class="py-name">logiws</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">-=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-59', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_hid</tt><tt class="py-op">(</tt><tt class="py-name">samples</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">                                <tt class="py-name">logiws</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">+=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-60', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_vis</tt><tt class="py-op">(</tt><tt class="py-name">samples</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">                        <tt class="py-comment"># averaging weights yields unnormalized probability</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                        <tt class="py-name">ulogprob</tt> <tt class="py-op">=</tt> <tt id="link-61" class="py-name"><a title="deepbelief.utils" class="py-name" href="#" onclick="return doclink('link-61', 'utils', 'link-0');">utils</a></tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="deepbelief.utils.logmeanexp" class="py-name" href="#" onclick="return doclink('link-62', 'logmeanexp', 'link-42');">logmeanexp</a></tt><tt class="py-op">(</tt><tt class="py-name">logiws</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                        <tt class="py-name">ubound</tt> <tt class="py-op">=</tt> <tt class="py-name">logiws</tt><tt class="py-op">.</tt><tt class="py-name">mean</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                        <tt class="py-name">ulogprob</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-63', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ulogprob_vis</tt><tt class="py-op">(</tt><tt class="py-name">X</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                        <tt class="py-name">ubound</tt> <tt class="py-op">=</tt> <tt class="py-name">ulogprob</tt><tt class="py-op">.</tt><tt class="py-name">copy</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                <tt class="py-comment"># return normalized log probability</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">ulogprob</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-64', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt><tt class="py-op">,</tt> <tt class="py-name">ubound</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="deepbelief.dbn" class="py-name" href="#" onclick="return doclink('link-65', 'dbn', 'link-9');">dbn</a></tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_ais_logz</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="deepbelief-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Deep Belief Net Toolbox</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct  5 16:44:30 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
