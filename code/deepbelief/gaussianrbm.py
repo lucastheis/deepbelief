@@ -86,6 +86,36 @@ class GaussianRBM(AbstractBM):
 
 
 
+	def _train_sleep(self, X, Y):
+		X = np.asmatrix(X)
+		Y = np.asmatrix(Y)
+
+		Q = 1. / (1. + np.exp(-self.W.T * X / self.sigma - self.c))
+
+		tmp1 = np.multiply(Y, 1 - Q)
+		tmp2 = np.multiply(Y - 1, Q)
+
+		self.dW = X * (tmp1 + tmp2).T / X.shape[1] + self.momentum * self.dW
+		self.dc = tmp1.mean(1) + tmp2.mean(1) + self.momentum * self.dc
+
+		self.W += self.dW * self.learning_rate
+		self.c += self.dc * self.learning_rate
+
+
+
+	def _train_wake(self, X, Y):
+		X = np.asmatrix(X)
+		Y = np.asmatrix(Y)
+
+		tmp = X - self.sigma * self.W * Y - self.b
+		self.dW = tmp * Y.T / X.shape[1] + self.momentum * self.dW
+		self.db = tmp.mean(1) + self.momentum * self.db
+
+		self.W += self.dW * self.learning_rate
+		self.b += self.db * self.learning_rate
+
+
+
 	def _clogprob_hid_vis(self, X, Y, all_pairs=False):
 		X = np.asmatrix(X)
 		Y = np.asmatrix(Y)

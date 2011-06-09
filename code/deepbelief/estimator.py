@@ -5,6 +5,8 @@ from mixbm import MixBM
 from basebm import BaseBM
 from semirbm import SemiRBM
 from dbn import DBN
+from tools.parallel import map
+from tools import shmarray
 
 __license__ = 'MIT License <http://www.opensource.org/licenses/mit-license.php>'
 __author__ = 'Lucas Theis <lucas@tuebingen.mpg.de>'
@@ -56,7 +58,6 @@ class Estimator:
 		for l in range(len(self.dbn)):
 			if not hasattr(self.dbn[l], '_ais_logz'):
 				self.dbn[l]._ais_logz = None
-				self.dbn[l]._ais_var = None
 				self.dbn[l]._ais_samples = None
 				self.dbn[l]._ais_logweights = None
 
@@ -112,7 +113,6 @@ class Estimator:
 		# store results for later use
 		self.dbn[layer]._ais_logweights = logweights + bsbm.logz
 		self.dbn[layer]._ais_logz = utils.logmeanexp(logweights) + bsbm.logz
-		self.dbn[layer]._ais_var = np.var(np.exp(logweights + bsbm.logz)) / num_ais_samples
 		self.dbn[layer]._ais_samples = X
 
 		return self.dbn[layer]._ais_logz
@@ -153,21 +153,22 @@ class Estimator:
 					if not self.dbn[l]._ais_logz:
 						self.dbn[l]._ais_logz = self.estimate_log_partition_function(layer=l)
 
-			# allocate memory for log importance weights
-			logiws = np.asmatrix(np.zeros([num_samples, X.shape[1]]))
+			# allocate (shared) memory for log importance weights
+			logiws = shmarray.zeros([num_samples, X.shape[1]])
 
 			# Monte Carlo estimation of unnormalized probability
-			for i in range(num_samples):
+			def parfor(i):
 				samples = X
 
 				for l in range(len(self.dbn) - 1):
-					logiws[i, :] += self.dbn[l]._ulogprob_vis(samples)
+					logiws[i, :] += self.dbn[l]._ulogprob_vis(samples).A[0]
 					samples = self.dbn[l].forward(samples)
-					logiws[i, :] -= self.dbn[l]._ulogprob_hid(samples)
-				logiws[i, :] += self.dbn[-1]._ulogprob_vis(samples)
+					logiws[i, :] -= self.dbn[l]._ulogprob_hid(samples).A[0]
+				logiws[i, :] += self.dbn[-1]._ulogprob_vis(samples).A[0]
+			map(parfor, range(num_samples))
 
 			# averaging weights yields unnormalized probability
-			ulogprob = utils.logmeanexp(logiws, 0)
+			ulogprob = utils.logmeanexp(np.asmatrix(logiws), 0)
 			ubound = logiws.mean(0)
 
 		else:

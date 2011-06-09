@@ -1,1 +1,1 @@
-__all__ = ["patchutil"]
+__all__ = ["patchutil", "parallel"]

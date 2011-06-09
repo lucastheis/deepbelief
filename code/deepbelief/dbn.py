@@ -1,5 +1,7 @@
 import numpy as np
 import utils
+import copy
+from semirbm import SemiRBM
 
 __license__ = 'MIT License <http://www.opensource.org/licenses/mit-license.php>'
 __author__ = 'Lucas Theis <lucas@tuebingen.mpg.de>'
@@ -39,6 +41,8 @@ class DBN:
 	B{References:}
 		- Hinton, G. E. and Salakhutdinov, R. (2006). I{Reducing the Dimensionality
 		of Data with Neural Networks.} Science.
+		- Hinton, G.E., P. Dayan, B. J. Frey and R. M. Neal (1995). I{The "wake-sleep" algorithm
+		for unsupervised neural networks.} Science.
 	"""
 
 	def __init__(self, model):
@@ -51,6 +55,9 @@ class DBN:
 
 		self.models = []
 		self.models.append(model)
+
+		# the proposal DBN used during wake-sleep training
+		self.proposal = None
 
 
 
@@ -196,14 +203,14 @@ class DBN:
 		"""
 
 		import estimator
-		return estimator.Estimator(self).estimate_log_probability(X)[0].mean()
+		return estimator.Estimator(self).estimate_log_probability(X, num_samples)[0].mean()
 
 
 
 	def train(self, X, num_epochs=50, batch_size=0, shuffle=True, learning_rates=None):
 		"""
-		This method trains the top level of the DBN while keeping the other
-		models fixed.
+		This method greedily trains the top level of the DBN while keeping the
+		other models fixed.
 
 		If C{batch_size} is 0, the model is trained on all samples at once.
 		Otherwise, the training samples are split into batches and several
@@ -261,3 +268,63 @@ class DBN:
 		# reset models to free memory
 		for model in self.models:
 			model.clear()
+
+
+
+	def train_wake_sleep(self, X, num_epochs=50, batch_size=0, shuffle=True):
+		"""
+		An implementation of the wake-sleep algorithm for training DBNs.
+
+		@type  X: array_like
+		@param X: data points stored in columns
+
+		@type  num_epochs: integer
+		@param num_epochs: number of iterations of the algorithm
+
+		@type  batch_size: integer
+		@param batch_size: size of data batches used for training
+
+		@type  shuffle: boolean
+		@param shuffle: randomize order of data before each iteration
+		"""
+
+		for model in self.models:
+			# make sure persistent Markov chains are used during sleep phase
+			model.persistent = True
+
+			# reset gradients
+			model.dW *= 0.
+			model.db *= 0.
+			model.dc *= 0.
+
+			if model.__class__ is SemiRBM:
+				model.dL *= 0.
+
+		if not batch_size:
+			batch_size = X.shape[1]
+
+		if self.proposal is None:
+			self.proposal = copy.deepcopy(self)
+
+		for epoch in range(num_epochs):
+			if shuffle:
+				# randomize order of data points
+				X = X[:, np.random.permutation(X.shape[1])]
+
+			# train on batches
+			for i in range(0, X.shape[1], batch_size):
+				Y = [X[:, i:i + batch_size]]
+
+				# wake phase (train the model)
+				for j in range(len(self) - 1):
+					Y.append(self.proposal[j].forward(Y[-1]))
+					self.models[j]._train_wake(Y[-2], Y[-1])
+				self.models[-1].train(Y[-1])
+
+				# sleep phase (adapt the proposal distribution)
+				Y = [self.models[-1].sample(num_samples=batch_size,
+					num_parallel_chains=batch_size, burn_in_length=1, sample_spacing=1)]
+
+				for j in range(len(self) - 2, -1, -1):
+					Y.append(self.models[j].backward(Y[-1]))
+					self.proposal[j]._train_sleep(Y[-1], Y[-2])

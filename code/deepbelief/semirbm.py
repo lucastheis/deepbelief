@@ -1,6 +1,7 @@
 import numpy as np
 import utils
 from abstractbm import AbstractBM
+from rbm import RBM
 
 __license__ = 'MIT License <http://www.opensource.org/licenses/mit-license.php>'
 __author__ = 'Lucas Theis <lucas@tuebingen.mpg.de>'
@@ -62,7 +63,7 @@ class SemiRBM(AbstractBM):
 			X = self.X
 		elif not isinstance(X, np.matrix):
 			X = np.matrix(X)
-		
+
 		self.Q = 1. / (1. + np.exp(-self.W.T * X - self.c))
 		self.Y = (np.random.rand(*self.Q.shape) < self.Q).astype(self.Q.dtype)
 
@@ -132,10 +133,6 @@ class SemiRBM(AbstractBM):
 			Q = self.Q.copy()
 
 			if self.persistent:
-				if X.shape[1] != self.pX.shape[1]:
-					# number of persistent chains equals batch size
-					self.pX = np.zeros_like(X)
-					self.pY = np.zeros_like(Q)
 				self.X = self.pX
 				self.Y = self.pY
 
@@ -149,30 +146,71 @@ class SemiRBM(AbstractBM):
 				self.pY = self.Y.copy()
 
 			# update parameters
-			self.dW = self.learning_rate * (X * Q.T - self.P * self.Y.T) / X.shape[1] \
-			        - self.learning_rate * self.weight_decay * self.W \
+			self.dW = X * Q.T / X.shape[1] - self.P * self.Y.T / self.X.shape[1] \
+			        - self.weight_decay * self.W \
 			        + self.momentum * self.dW
-			self.db = self.learning_rate * (X - self.P).mean(1) + self.momentum * self.db
-			self.dc = self.learning_rate * (Q - self.Y).mean(1) + self.momentum * self.dc
-			self.dL = self.learning_rate_lateral * (X * X.T - self.P * self.P.T) / X.shape[1] \
-			        - self.learning_rate_lateral * self.weight_decay_lateral * self.L \
+			self.db = X.mean(1) - self.P.mean(1) + self.momentum * self.db
+			self.dc = Q.mean(1) - self.Y.mean(1) + self.momentum * self.dc
+			self.dL = X * X.T / X.shape[1] - self.P * self.P.T / self.X.shape[1] \
+			        - self.weight_decay_lateral * self.L \
 			        + self.momentum_lateral * self.dL
 			self.dL -= np.diag(np.diag(self.dL))
 
-			self.W += self.dW
-			self.b += self.db
-			self.c += self.dc
-			self.L += self.dL
+			self.W += self.dW * self.learning_rate
+			self.b += self.db * self.learning_rate
+			self.c += self.dc * self.learning_rate
+			self.L += self.dL * self.learning_rate_lateral
 		else:
 			# update RBM parameters
 			AbstractBM.train(self, X)
 
 			# update lateral connections
-			self.dL = self.learning_rate_lateral * (X * X.T - self.X * self.X.T) / X.shape[1] \
-			        - self.learning_rate_lateral * self.weight_decay_lateral * self.L \
+			self.dL = X * X.T / X.shape[1] - self.X * self.X.T / self.X.shape[1] \
+			        - self.weight_decay_lateral * self.L \
 			        + self.momentum_lateral * self.dL
 			self.dL -= np.diag(np.diag(self.dL))
-			self.L += self.dL
+			
+			self.L += self.dL * self.learning_rate_lateral
+
+
+
+	def _train_wake(self, X, Y):
+		X = np.asmatrix(X)
+		Y = np.asmatrix(Y)
+
+		self.backward(Y)
+
+		if self.sampling_method is AbstractBM.MF:
+			self.db = X.mean(1) - self.P.mean(1) + self.momentum * self.db
+			self.dW = (X * Y.T - self.P * Y.T) / X.shape[1] + self.momentum * self.dW
+			self.dL = (X * X.T - self.P * self.P.T) / self.X.shape[1]
+			self.dL -= np.diag(np.diag(self.dL))
+		else:
+			self.db = X.mean(1) - self.X.mean(1) + self.momentum * self.db
+			self.dW = (X * Y.T - self.X * Y.T) / X.shape[1] + self.momentum * self.dW
+			self.dL = (X * X.T - self.X * self.X.T) / self.X.shape[1]
+			self.dL -= np.diag(np.diag(self.dL))
+
+		self.W += self.dW * self.learning_rate
+		self.b += self.db * self.learning_rate
+		self.L += self.dL * self.learning_rate_lateral
+
+
+
+	def _train_sleep(self, X, Y):
+		X = np.asmatrix(X)
+		Y = np.asmatrix(Y)
+
+		Q = 1. / (1. + np.exp(-self.W.T * X - self.c))
+
+		tmp1 = np.multiply(Y, 1 - Q)
+		tmp2 = np.multiply(Y - 1, Q)
+
+		self.dW = X * (tmp1 + tmp2).T / X.shape[1] + self.momentum * self.dW
+		self.dc = tmp1.mean(1) + tmp2.mean(1) + self.momentum * self.dc
+
+		self.W += self.dW * self.learning_rate
+		self.c += self.dc * self.learning_rate
 
 
 
@@ -200,35 +238,31 @@ class SemiRBM(AbstractBM):
 
 
 
-	def _ulogprob_hid(self, Y):
+	def _ulogprob_hid(self, Y, num_is_samples=100):
 		"""
-		Estimates the unnormalized marginal log-probabilities of the given hidden
-		states using importance samples obtained with AIS.
+		Estimates the unnormalized marginal log-probabilities of hidden states.
 		
 		Use this method only if you know what you are doing.
 		"""
 
-		if not hasattr(self, '_ais_samples'):
-			raise Exception('This method should only be called in conjunction with AIS.')
+		# approximate this SRBM with an RBM
+		rbm = RBM(self.X.shape[0], self.Y.shape[0])
+		rbm.W = self.W
+		rbm.b = self.b
+		rbm.c = self.c
 
-		num_ais_samples = self._ais_samples.shape[1]
+		# allocate memory
+		Q = np.asmatrix(np.zeros([num_is_samples, Y.shape[1]]))
 
-		# data will be split into batches of size max_samples
-		max_samples = min(1E7 / num_ais_samples, Y.shape[1])
+		for k in range(num_is_samples):
+			# draw importance samples
+			X = rbm.backward(Y)
 
-		# estimate hidden probabilities using importance samples
-		ulogprobs_hid = np.asmatrix(np.zeros([1, Y.shape[1]]))
+			# store importance weights
+			Q[k, :] = self._ulogprob(X, Y) - rbm._clogprob_vis_hid(X, Y)
 
-		for k in range(int(np.ceil(Y.shape[1] / max_samples))):
-			s = k * max_samples
-			n = min(max_samples, Y.shape[1] - s)
-
-			# sum over importance samples
-			ulogprobs_hid[0, s:s + n] = utils.logsumexp(
-			   self._clogprob_hid_vis(self._ais_samples, Y[:, s:s + n], all_pairs=True) + \
-			   self._ais_logweights.T , 0)
-
-		return ulogprobs_hid - np.log(num_ais_samples)
+		# average importance weights to get estimates
+		return utils.logmeanexp(Q, 0)
 
 
 

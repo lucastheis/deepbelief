@@ -115,12 +115,11 @@ class AbstractBM:
 		self.Q = np.zeros_like(self.Y)
 
 		# states of persistent Markov chain
-		self.pX = np.zeros_like(self.X)
-		self.pY = np.zeros_like(self.Y)
+		self.pX = np.zeros([num_visibles, 100])
+		self.pY = np.zeros([num_hiddens, 100])
 
 		# used by annealed importance sampling
 		self.ais_logz = None
-		self.ais_var = None
 		self.ais_samples = None
 		self.ais_logweights = None
 
@@ -184,8 +183,11 @@ class AbstractBM:
 		"""
 
 		# preparations
-		self.X = np.zeros([self.X.shape[0], num_parallel_chains]) if X is None else X
-		self.X = np.asmatrix(self.X)
+		if self.persistent and self.pX.shape[1] == num_parallel_chains:
+			self.X = self.pX
+		else:
+			self.X = np.zeros([self.X.shape[0], num_parallel_chains]) if X is None else X
+			self.X = np.asmatrix(self.X)
 
 		sample_step = self._sample_hmc_step if self.sampling_method is AbstractBM.HMC else self._sample_gibbs_step
 		samples = []
@@ -198,6 +200,10 @@ class AbstractBM:
 			for t in range(sample_spacing):
 				sample_step()
 			samples.append(self.X.copy())
+
+		if self.persistent:
+			self.pX = self.X.copy()
+			self.pY = self.Y.copy()
 
 		return np.concatenate(samples, 1)[:, :num_samples]
 
@@ -222,10 +228,6 @@ class AbstractBM:
 		Q = self.Q.copy()
 
 		if self.persistent:
-			if X.shape[1] != self.pX.shape[1]:
-				# number of persistent chains equals batch size
-				self.pX = np.zeros_like(X)
-				self.pY = np.zeros_like(Q)
 			self.X = self.pX
 			self.Y = self.pY
 
@@ -239,16 +241,16 @@ class AbstractBM:
 			self.pY = self.Y.copy()
 
 		# update parameters
-		self.dW = self.learning_rate * (X * Q.T - self.X * self.Q.T) / X.shape[1] \
-		        - self.learning_rate * self.weight_decay * self.W \
+		self.dW = X * Q.T / X.shape[1] - self.X * self.Q.T / self.X.shape[1] \
+		        - self.weight_decay * self.W \
 		        + self.momentum * self.dW
-		self.db = self.learning_rate * (X - self.X).mean(1) + self.momentum * self.db
-		self.dc = self.learning_rate * (Q - self.Q).mean(1) + self.momentum * self.dc \
-		        - self.learning_rate * self.sparseness * np.multiply(np.multiply(Q, 1. - Q).mean(1), (Q.mean(1) - self.sparseness_target))
+		self.db = X.mean(1) - self.X.mean(1) + self.momentum * self.db
+		self.dc = Q.mean(1) - self.Q.mean(1) + self.momentum * self.dc
+#		        - self.sparseness * np.multiply(np.multiply(Q, 1. - Q).mean(1), (Q.mean(1) - self.sparseness_target))
 
-		self.W += self.dW
-		self.b += self.db
-		self.c += self.dc
+		self.W += self.dW * self.learning_rate
+		self.b += self.db * self.learning_rate
+		self.c += self.dc * self.learning_rate
 
 
 
@@ -299,36 +301,33 @@ class AbstractBM:
 
 
 
-	def _sample_hmc_step(self):
+	def _train_sleep(self, X, Y):
 		"""
-		Performs one step of hybrid Monte Carlo sampling.
+		Optimize conditinal likelihood for Y given X.
+
+		@type  X: array_like
+		@param X: visible states stored in columns
+
+		@type  Y: array_like
+		@param Y: hidden states stored in columns
 		"""
 
-		# copy current visible state
-		X = self.X.copy()
+		raise Exception('Abstract method \'_train_sleep\' not implemented in ' + str(self.__class__))
 
-		# sample velocities
-		V = np.random.randn(self.X.shape[0], self.X.shape[1])
 
-		# store value of Hamiltonian
-		H = self._free_energy(X) + np.sum(np.square(V), 0)
 
-		# perform leap-frog steps to get candidate
-		V -= self.lf_step_size / 2. * self._free_energy_gradient(X)
+	def _train_wake(self, X, Y):
+		"""
+		Optimize conditinal likelihood for X given Y.
 
-		for t in range(self.lf_steps - 1):
-			X += self.lf_step_size * V
-			V -= self.lf_step_size * self._free_energy_gradient(X)
+		@type  X: array_like
+		@param X: visible states stored in columns
 
-		X += self.lf_step_size * V
-		V -= self.lf_step_size / 2. * self._free_energy_gradient(X)
+		@type  Y: array_like
+		@param Y: hidden states stored in columns
+		"""
 
-		# accept/reject samples
-		accepted = np.random.rand(1, H.shape[1]) < np.exp(H - self._free_energy(X) - np.sum(np.square(V), 0))
-		accepted = accepted.A.flatten()
-		self.X[:, accepted] = X[:, accepted]
-
-		# TODO: adapt leapfrog step size
+		raise Exception('Abstract method \'_train_wake\' not implemented in ' + str(self.__class__))
 
 
 
